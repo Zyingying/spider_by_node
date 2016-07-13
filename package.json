@@ -4,15 +4,10 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "cheerio": "^0.20.0",
+    "express": "^4.14.0",
+    "http": "0.0.0",
     "mysql": "^2.10.2",
-    "async": "^2.0.0-rc.4",
-    "curl": "^0.1.4",
-    "step": "^0.0.6",
-    "bagpipe": "^0.3.5",
-    "sys": "^0.0.1",
-    "telnet": "^0.0.1",
-    "stop": "^3.0.1",
-    "cheerio": "^0.20.0"
   },
   "devDependencies": {},
   "scripts": {
