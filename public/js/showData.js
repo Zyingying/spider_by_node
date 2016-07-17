@@ -2,7 +2,7 @@
 * @Author: Yingying
 * @Date:   2016-07-04 00:27:29
 * @Last Modified by:   Yingying
-* @Last Modified time: 2016-07-18 00:40:10
+* @Last Modified time: 2016-07-18 00:44:16
 */
 "use strict";
 var main = document.querySelector('#main');
@@ -25,11 +25,11 @@ $.get('http://localhost:3000/', function(data) {
 
 var insertTitle = function(data){
 	let len = data.length,
-	      i  ;
+		  i  ;
 	for (i = data.length - 1; i >= 0; i--) {
 		let title = data[i].Title,
-	    	url  += 'http://zyingying.github.io/'+ data[i].Url;
+			url  += 'http://zyingying.github.io/'+ data[i].Url;
 
-	    $(".start").append('<div class="article"><a href="' + url + '">' + title + '</a></div>" ');
+		$(".start").append('<div class="article"><a href="' + url + '">' + title + '</a></div>" ');
 	};
 }
