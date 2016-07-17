@@ -2,7 +2,7 @@
 * @Author: Yingying
 * @Date:   2016-05-24 23:45:59
 * @Last Modified by:   Yingying
-* @Last Modified time: 2016-07-14 17:25:47
+* @Last Modified time: 2016-07-17 23:50:00
 */
 
 "use strict";
@@ -21,7 +21,7 @@ var url    =  "http://zyingying.github.io",
 let connection = mysql.createConnection({     
 			host     : '127.0.0.1',
 			user     : 'root',
-			password : 'lwy1234',
+			password : 'root',
 			database : 'nodesample'
 }); 
 
