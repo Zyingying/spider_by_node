@@ -2,7 +2,7 @@
 * @Author: Yingying
 * @Date:   2016-05-24 23:45:59
 * @Last Modified by:   Yingying
-* @Last Modified time: 2016-07-17 23:50:00
+* @Last Modified time: 2016-07-20 20:09:00
 */
 
 "use strict";
@@ -21,7 +21,7 @@ var url    =  "http://zyingying.github.io",
 let connection = mysql.createConnection({     
 			host     : '127.0.0.1',
 			user     : 'root',
-			password : 'root',
+			password : 'lwy1234',
 			database : 'nodesample'
 }); 
 
@@ -60,6 +60,20 @@ var req = http.request(url, function(res){
 // 发送请求
 req.end();
 
+// 将功能抽离
+const query = (getSql,options) => {
+
+	connection.query(userGetSql,function (err, result) {
+					if(err){
+						console.log(options +'- ',err.message);
+						return;
+					}        
+				 console.log('result----->',result);
+
+				 fun(null, result);
+	});
+
+}
 
 	//查询
 	const SelectData = (data,fun) => {
@@ -172,18 +186,18 @@ req.end();
 
  	const SelectAll = (done) => {
 			// 查询
-			var  userGetSql = 'SELECT * FROM catalog  ';
+			var  userGetSql = 'SELECT * FROM catalog ';
 			// 查
 			connection.query(userGetSql,function (err, result) {
-							if(err){
-								console.log('[SELECT ERROR] - ',err.message);
-								return done(err);
-							}        
+					if(err){
+						console.log('[SELECT ERROR] - ',err.message);
+						return done(err);
+					}        
 
-						 console.log('--------------------------SELECT----------------------------');
-						 console.log('result----->',result);
+					console.log('--------------------------SELECT----------------------------');
+					console.log('result----->',result);
 
-						 done(null, result);
+					done(null, result);
 							
 			});
 	}
