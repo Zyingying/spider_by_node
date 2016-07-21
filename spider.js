@@ -2,7 +2,7 @@
 * @Author: Yingying
 * @Date:   2016-05-24 23:45:59
 * @Last Modified by:   Yingying
-* @Last Modified time: 2016-07-21 22:54:10
+* @Last Modified time: 2016-07-21 22:56:21
 */
 
 "use strict";
@@ -62,79 +62,79 @@ req.end();
 
 
 	//查询
-	const SelectData = (data,fun) => {
+	// const SelectData = (data,fun) => {
 
-			// 查询
-			var  userGetSql = 'SELECT * FROM catalog WHERE Url = \'' + data.Url + ' \'';
-			console.log(userGetSql);
-			// 查
-			connection.query(userGetSql,function (err, result) {
-							if(err){
-								console.log('[SELECT ERROR] - ',err.message);
-								return;
-							}        
-						 console.log('--------------------------SELECT----------------------------');
-						 console.log('result----->',result);
+	// 		// 查询
+	// 		var  userGetSql = 'SELECT * FROM catalog WHERE Url = \'' + data.Url + ' \'';
+	// 		console.log(userGetSql);
+	// 		// 查
+	// 		connection.query(userGetSql,function (err, result) {
+	// 						if(err){
+	// 							console.log('[SELECT ERROR] - ',err.message);
+	// 							return;
+	// 						}        
+	// 					 console.log('--------------------------SELECT----------------------------');
+	// 					 console.log('result----->',result);
 
-						 fun(null, result);
-			});
-			// connection.end();
-	}
+	// 					 fun(null, result);
+	// 		});
+	// 		// connection.end();
+	// }
 
 		// 增加
-	const Insert = (data) => {
+	// const Insert = (data) => {
 
-			var  userAddSql = 'INSERT INTO catalog(Author,Title,Url) VALUES(?,?,?)';
-			//log: 取对象属性的时候,注意判断是否有值 
-			if(!data) return;
-			var  userAddSql_Params = [author,data.Title,data.Url];
-			console.log('插入数据中。。。。',userAddSql_Params);
-			// //增
-			connection.query(userAddSql,userAddSql_Params,function (err, result) {
-							if(err){
-							 console.log('[INSERT ERROR] - ',err.message);
-							 return;
-							}        
-						 console.log('--------------------------INSERT----------------------------');
-						 console.log('INSERT ID:\n',result);        
-						 console.log('-----------------------------------------------------------------\n\n');  
-			});
+	// 		var  userAddSql = 'INSERT INTO catalog(Author,Title,Url) VALUES(?,?,?)';
+	// 		//log: 取对象属性的时候,注意判断是否有值 
+	// 		if(!data) return;
+	// 		var  userAddSql_Params = [author,data.Title,data.Url];
+	// 		console.log('插入数据中。。。。',userAddSql_Params);
+	// 		// //增
+	// 		connection.query(userAddSql,userAddSql_Params,function (err, result) {
+	// 						if(err){
+	// 						 console.log('[INSERT ERROR] - ',err.message);
+	// 						 return;
+	// 						}        
+	// 					 console.log('--------------------------INSERT----------------------------');
+	// 					 console.log('INSERT ID:\n',result);        
+	// 					 console.log('-----------------------------------------------------------------\n\n');  
+	// 		});
 
-	}
+	// }
 
 
 	// 更新
-	const Update = (author,title,url) => {
+	// const Update = (author,title,url) => {
 
-			var userModSql = 'UPDATE catalog SET Author = ? ,Title = ? WHERE Url = ?';
-			var userModSql_Params = [author,title,url];
-			//改
-			connection.query(userModSql,userModSql_Params,function (err, result) {
-				 if(err){
-							 console.log('[UPDATE ERROR] - ',err.message);
-							 return;
-				 }        
-				console.log('--------------------------UPDATE----------------------------');
-				console.log('UPDATE affectedRows',result.affectedRows);
-			});
+	// 		var userModSql = 'UPDATE catalog SET Author = ? ,Title = ? WHERE Url = ?';
+	// 		var userModSql_Params = [author,title,url];
+	// 		//改
+	// 		connection.query(userModSql,userModSql_Params,function (err, result) {
+	// 			 if(err){
+	// 						 console.log('[UPDATE ERROR] - ',err.message);
+	// 						 return;
+	// 			 }        
+	// 			console.log('--------------------------UPDATE----------------------------');
+	// 			console.log('UPDATE affectedRows',result.affectedRows);
+	// 		});
 
 
-	}
+	// }
 
-	const Delete = () => {
+	// const Delete = () => {
 
-			var  userDelSql = 'DELETE FROM catalog';
-			//删
-			connection.query(userDelSql,function (err, result) {
-							if(err){
-								console.log('[DELETE ERROR] - ',err.message);
-								return;
-							}        
-						 console.log('--------------------------DELETE----------------------------');
-						 console.log('DELETE affectedRows',result.affectedRows);
-						 console.log('-----------------------------------------------------------------\n\n');  
-			});
-	}
+	// 		var  userDelSql = 'DELETE FROM catalog';
+	// 		//删
+	// 		connection.query(userDelSql,function (err, result) {
+	// 						if(err){
+	// 							console.log('[DELETE ERROR] - ',err.message);
+	// 							return;
+	// 						}        
+	// 					 console.log('--------------------------DELETE----------------------------');
+	// 					 console.log('DELETE affectedRows',result.affectedRows);
+	// 					 console.log('-----------------------------------------------------------------\n\n');  
+	// 		});
+	// }
  
 // 将功能抽离
 const query = (userGetSql,options,fun,userAddSql_Params) => {
