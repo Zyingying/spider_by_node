@@ -2,7 +2,7 @@
 * @Author: Yingying
 * @Date:   2016-05-24 23:45:59
 * @Last Modified by:   Yingying
-* @Last Modified time: 2016-07-26 23:48:35
+* @Last Modified time: 2016-07-27 22:30:38
 */
 
 "use strict";
@@ -60,8 +60,45 @@ var req = http.request(url, function(res){
 // 发送请求
 req.end();
 
-
 	
+ 
+// 将功能抽离
+const query = (userGetSql,options,fun,userAddSql_Params) => {
+
+	if (userAddSql_Params === undefined) {
+
+		connection.query(userGetSql,function (err, result) {
+				if(err){
+					console.log(options +'- ',err.message);
+					return;
+				}        
+				console.log('result----->',result);
+				fun(null, result);
+		});
+	}
+	if(fun == undefined){
+
+		connection.query(userGetSql,userModSql_Params,function (err, result) {
+				if(err){
+					console.log(options +'- ',err.message);
+					return;
+				}        
+				console.log('result----->',result);
+				
+		});
+	}
+	
+}
+
+
+const main = (data) => {
+	
+	console.log('++++++++++++++++++++++++++++++++++++++',data);
+	let len = data.length,j;
+
+	for(j = 0 ; j < len; j++){
+
+
  
 // 将功能抽离
 const query = (userGetSql,options,fun,userAddSql_Params) => {
@@ -98,6 +135,7 @@ const main = (data) => {
 	let len = data.length,j;
 
 	for(j = 0 ; j < len; j++){
+
 
 			//查询是否有重复的东西
 			let sql =  'SELECT * FROM catalog WHERE Url = \'' + data.Url + ' \'';
