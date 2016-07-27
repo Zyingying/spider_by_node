@@ -2,7 +2,8 @@
 * @Author: Yingying
 * @Date:   2016-05-24 23:45:59
 * @Last Modified by:   Yingying
-* @Last Modified time: 2016-07-27 22:36:04
+* @Last Modified time: 2016-07-27 22:40:23
+
 */
 
 "use strict";
@@ -65,6 +66,7 @@ req.end();
 // 将功能抽离
 const query = (userGetSql,options,fun,userAddSql_Params) => {
 
+
 	if (userAddSql_Params === undefined) {
 
 		connection.query(userGetSql,function (err, result) {
@@ -93,11 +95,12 @@ const query = (userGetSql,options,fun,userAddSql_Params) => {
 
 const main = (data) => {
 	
-	console.log('++++++++++++++++++++++++++++++++++++++',data)
+
+	console.log('++++++++++++++++++++++++++++++++++++++',data);
+
 	let len = data.length,j;
 
 	for(j = 0 ; j < len; j++){
-
 
 	//查询
 	// const SelectData = (data,fun) => {
@@ -173,7 +176,7 @@ const main = (data) => {
 	// 					 console.log('-----------------------------------------------------------------\n\n');  
 	// 		});
 	// }
- 
+
 // 将功能抽离
 const query = (userGetSql,options,fun,userAddSql_Params) => {
 
@@ -209,6 +212,7 @@ const main = (data) => {
 	let len = data.length,j;
 
 	for(j = 0 ; j < len; j++){
+
 
 			//查询是否有重复的东西
 			let sql =  'SELECT * FROM catalog WHERE Url = \'' + data.Url + ' \'';
