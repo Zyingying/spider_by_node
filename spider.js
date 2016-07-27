@@ -2,7 +2,7 @@
 * @Author: Yingying
 * @Date:   2016-05-24 23:45:59
 * @Last Modified by:   Yingying
-* @Last Modified time: 2016-07-26 23:48:35
+* @Last Modified time: 2016-07-27 22:36:04
 */
 
 "use strict";
@@ -60,8 +60,119 @@ var req = http.request(url, function(res){
 // 发送请求
 req.end();
 
-
 	
+ 
+// 将功能抽离
+const query = (userGetSql,options,fun,userAddSql_Params) => {
+
+	if (userAddSql_Params === undefined) {
+
+		connection.query(userGetSql,function (err, result) {
+				if(err){
+					console.log(options +'- ',err.message);
+					return;
+				}        
+				console.log('result----->',result);
+				fun(null, result);
+		});
+	}
+	if(fun == undefined){
+
+		connection.query(userGetSql,userModSql_Params,function (err, result) {
+				if(err){
+					console.log(options +'- ',err.message);
+					return;
+				}        
+				console.log('result----->',result);
+				
+		});
+	}
+	
+}
+
+
+const main = (data) => {
+	
+	console.log('++++++++++++++++++++++++++++++++++++++',data)
+	let len = data.length,j;
+
+	for(j = 0 ; j < len; j++){
+
+
+	//查询
+	// const SelectData = (data,fun) => {
+
+	// 		// 查询
+	// 		var  userGetSql = 'SELECT * FROM catalog WHERE Url = \'' + data.Url + ' \'';
+	// 		console.log(userGetSql);
+	// 		// 查
+	// 		connection.query(userGetSql,function (err, result) {
+	// 						if(err){
+	// 							console.log('[SELECT ERROR] - ',err.message);
+	// 							return;
+	// 						}        
+	// 					 console.log('--------------------------SELECT----------------------------');
+	// 					 console.log('result----->',result);
+
+	// 					 fun(null, result);
+	// 		});
+	// 		// connection.end();
+	// }
+
+		// 增加
+	// const Insert = (data) => {
+
+	// 		var  userAddSql = 'INSERT INTO catalog(Author,Title,Url) VALUES(?,?,?)';
+	// 		//log: 取对象属性的时候,注意判断是否有值 
+	// 		if(!data) return;
+	// 		var  userAddSql_Params = [author,data.Title,data.Url];
+	// 		console.log('插入数据中。。。。',userAddSql_Params);
+	// 		// //增
+	// 		connection.query(userAddSql,userAddSql_Params,function (err, result) {
+	// 						if(err){
+	// 						 console.log('[INSERT ERROR] - ',err.message);
+	// 						 return;
+	// 						}        
+	// 					 console.log('--------------------------INSERT----------------------------');
+	// 					 console.log('INSERT ID:\n',result);        
+	// 					 console.log('-----------------------------------------------------------------\n\n');  
+	// 		});
+
+	// }
+
+
+	// 更新
+	// const Update = (author,title,url) => {
+
+	// 		var userModSql = 'UPDATE catalog SET Author = ? ,Title = ? WHERE Url = ?';
+	// 		var userModSql_Params = [author,title,url];
+	// 		//改
+	// 		connection.query(userModSql,userModSql_Params,function (err, result) {
+	// 			 if(err){
+	// 						 console.log('[UPDATE ERROR] - ',err.message);
+	// 						 return;
+	// 			 }        
+	// 			console.log('--------------------------UPDATE----------------------------');
+	// 			console.log('UPDATE affectedRows',result.affectedRows);
+	// 		});
+
+
+	// }
+
+	// const Delete = () => {
+
+	// 		var  userDelSql = 'DELETE FROM catalog';
+	// 		//删
+	// 		connection.query(userDelSql,function (err, result) {
+	// 						if(err){
+	// 							console.log('[DELETE ERROR] - ',err.message);
+	// 							return;
+	// 						}        
+	// 					 console.log('--------------------------DELETE----------------------------');
+	// 					 console.log('DELETE affectedRows',result.affectedRows);
+	// 					 console.log('-----------------------------------------------------------------\n\n');  
+	// 		});
+	// }
  
 // 将功能抽离
 const query = (userGetSql,options,fun,userAddSql_Params) => {
