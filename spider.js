@@ -2,7 +2,7 @@
 * @Author: Yingying
 * @Date:   2016-05-24 23:45:59
 * @Last Modified by:   Yingying
-* @Last Modified time: 2016-08-01 00:31:10
+* @Last Modified time: 2016-08-01 00:33:54
 */
 
 "use strict";
@@ -91,42 +91,7 @@ const query = (userGetSql,options,fun,userAddSql_Params) => {
 }
 
 
-const main = (data) => {
-	
-	console.log('++++++++++++++++++++++++++++++++++++++',data);
-	let len = data.length,j;
 
-	for(j = 0 ; j < len; j++){
-
-
- 
-// 将功能抽离
-const query = (userGetSql,options,fun,userAddSql_Params) => {
-
-	if (userAddSql_Params === undefined) {
-
-		connection.query(userGetSql,function (err, result) {
-				if(err){
-					console.log(options +'- ',err.message);
-					return;
-				}        
-				console.log('result----->',result);
-				fun(null, result);
-		});
-	}
-	if(fun == undefined){
-
-		connection.query(userGetSql,userModSql_Params,function (err, result) {
-				if(err){
-					console.log(options +'- ',err.message);
-					return;
-				}        
-				console.log('result----->',result);
-				
-		});
-	}
-	
-}
 
 
 const main = (data) => {
