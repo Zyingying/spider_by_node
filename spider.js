@@ -2,7 +2,7 @@
 * @Author: Yingying
 * @Date:   2016-05-24 23:45:59
 * @Last Modified by:   Yingying
-* @Last Modified time: 2016-07-27 22:30:38
+* @Last Modified time: 2016-08-01 00:31:10
 */
 
 "use strict";
@@ -171,21 +171,21 @@ const main = (data) => {
 }
 
 
- 	const SelectAll = (done) => {
-			// 查询
-			var  userGetSql = 'SELECT * FROM catalog ';
-			// 查
-			connection.query(userGetSql,function (err, result) {
-					if(err){
-						console.log('[SELECT ERROR] - ',err.message);
-						return done(err);
-					}        
+const SelectAll = (done) => {
+	// 查询
+	var  userGetSql = 'SELECT * FROM catalog ';
+	// 查
+	connection.query(userGetSql,function (err, result) {
+			if(err){
+				console.log('[SELECT ERROR] - ',err.message);
+				return done(err);
+			}        
 
-					console.log('--------------------------SELECT----------------------------');
-					console.log('result----->',result);
+			console.log('--------------------------SELECT----------------------------');
+			console.log('result----->',result);
 
-					done(null, result);
-							
-			});
-	}
+			done(null, result);
+					
+	});
+}
 
